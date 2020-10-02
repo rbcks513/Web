@@ -5,13 +5,7 @@
     <meta charset="utf-8" >
     <meta name = "author" content="201602826">
     <meta name = "keywords" content="김규찬">
-    <style>
-    table, th, td{
-      border: 1px solid black;
-      border-collapse : collapse;
-      text-align : center;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
   <h1>김규찬이란 누구인가</h1>
@@ -52,20 +46,21 @@
         <th>여행지그림</th>
       </tr>
     </thead>
+
     <tbody>
       <tr>
-        <td rowspan="3">제주도</td>
-        <td>첫째 날</td>
+        <td rowspan="3" class="Ta">제주도</td>
+        <td class="Ta">첫째 날</td>
         <td><ol>
           <li>비행기탑승</li>
           <li>숙소체크인</li>
           <li>저녁식사</li>
         </ol></td>
         <td><a href="https://blog.naver.com/glow20?Redirect=Log&logNo=222081164227&proxyReferer=https%3A%2F%2Fsearch.naver.com%2Fsearch.naver%3Fsm%3Dtab_hty.top%26where%3Dpost%26query%3D%25EA%25B9%2580%25ED%258F%25AC%25EA%25B3%25B5%25ED%2595%25AD%25ED%258C%2581%26oquery%3D%25EC%25A0%259C%25EC%25A3%25BC%25EA%25B3%25B5%25ED%2595%25AD%25ED%258C%2581%26tqi%3DU1WuolprvxZssgaoI6hssssss58-148784" target="_blank">김포공항할인</a></td>
-        <td><img width="400" height="200" src="GimpoAir.jpg" alt="김포공항사진"></td>
+        <td><img src="images/GimpoAir.jpg" alt="김포공항사진"></td>
       </tr>
       <tr>
-        <td>둘째날</td>
+        <td class="Ta">둘째날</td>
         <td><ol>
           <li>아침식사</li>
           <li>점심식사<ul>
@@ -75,21 +70,48 @@
           <li>저녁식사</li>
         </ol></td>
         <td><a href="https://www.mangoplate.com/top_lists/1095_summerguide_jeju" target="_blank">제주맛집</a></td>
-        <td><img width="400" height="200" src="gogiguckssoo.jpg" alt="고기국수"></td>
+        <td><img src="images/gogiguckssoo.jpg" alt="고기국수"></td>
       </tr>
       <tr>
-        <td>셋째 날</td>
+        <td class="Ta">셋째 날</td>
         <td><ol>
           <li>아침식사</li>
           <li>숙소체크아웃</li>
           <li>비행기탑승</li>
         </ol></td>
         <td><a href="https://post.naver.com/viewer/postView.nhn?volumeNo=19311627&memberNo=42762948" target="_blank">제주국제공항꿀팁</a></td>
-        <td><img width="400" height="200" src="JejuAir.jpg" alt="제주공항사진"></td>
+        <td><img src="images/JejuAir.jpg" alt="제주공항사진"></td>
       </tr>
     </tbody>
   </table>
   <div><h2>즐겨찾는페이지</h2></div>
-    <iframe width="400" height="200" src="https://questionnote.tistory.com/" title="필자의 블로그"></iframe>
+    <iframe src="https://questionnote.tistory.com/" title="필자의 블로그"></iframe>
+  <h2>정보입력</h2>
+  <form action="webinfo.php" method="POST">
+  <fieldset>
+    <legend>개인 정보</legend>
+      <label for="name">이름:</label>
+      <input type="text" name="name" id="name">
+    <br>
+      <label for="major">전공:</label>
+    	  <select name="major" id="major">
+          <option value="Computer">컴퓨터공학</option>
+          <option value="Construct">건축공학</option>
+          <option value="electro">전자과</option>
+        </select>
+    <br>
+      <span>취미</span>
+        <input type="checkbox" name="hobby" value="swim" id="swim">
+        <label for="swim">수영</label>
+        <input type="checkbox" name="hobby" value="golf" id="golf">
+        <label for="golf">골프</label>
+        <input type="checkbox" name="hobby" value="foot-ball" id="food-ball">
+        <label for="food-ball">축구</label>
+    <br>
+        <textarea  name="introduce-self" rows="10" cols="25">간략하게 100자 이내로 작성하시오</textarea>
+    <br>  
+        <input type="submit" value="제출">
+  </fieldset>
+  </form>
   </body>
 </html>
