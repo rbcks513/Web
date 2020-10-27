@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang = "ko">
   <head>
-  <title>201602826 장바구니 만들기</title>
+    <title>201602826 장바구니 만들기</title>
     <meta charset="utf-8" >
     <meta name = "author" content="201602826">
     <meta name = "keywords" content="김규찬">
@@ -9,21 +9,97 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-  <div id = "product_registration_" name = "product_registration_" >
-    <table style id = "basket">
-      <thead>
-        <tr>
-          <th>test
-          <a href="#" id = "icon"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-          </th>
-        </tr>
-      </thead> 
-    </table>
-  </div>
-  <div id = "shopping_basket_" name = "shopping_basket_" >
-
-  </div>
-  <div id = "search" name = "search" ></div>
-  
+    <div id = "productRegistration">
+      <a href = "javascript:showWindow()" id = "icon" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
+    </div>
+    <div id = "inputWindow">
+      <h1>상품 장바구니 등록</h1>
+      <p><label for = "productImage">상품 이미지: </label>
+      <input type = "file" id = "productImage"></p>
+      <p><label for = "productName">상품 이름 :</label>
+      <input type = "text" id = "productName"></p>
+      <p><label for = "productPrice">상품 가격 :</label>
+      <input type = "number" id = "productPrice" min = "1000"></p>
+      <p><label for = "productNumber">상품 개수 :</label>
+      <input type = "number" id = "productNumber" min = "1" max = "50">
+      최대 50개 이하까지 선택가능</p>
+      <p>배송방법 :
+      <input type = "radio" name = "method" id = "methodGeneral" value ="General">
+      <label for = "methodGeneral">일반 배송</label>
+      <input type = "radio" name = "method" id = "methodDawn" value ="Dawn">
+      <label for = "methodDawn">새벽 배송</label></p>
+      <br>
+      <p><input type = "submit" value = "장바구니담기" id = "submit">
+      <input type = "button" value = "취소"></p>
+    </div>
+    <br><br>
+    <div id = "generalDelivery" >
+      <p>일반배송 : <input type = "checkbox" id = "generalSelectAll">
+      <label for = "generalSelectAll">전체 선택</label>
+      <input type="button" value = "선택 삭제" id = "generalSelectDeletion">
+      <input type="button" value = "새벽 배송으로 이동" id = "replaceDawn"></p>
+      <table>
+        <thead>
+          <tr>
+            <th>선택</th>
+            <th>상품 이미지</th>
+            <th>상품 이름</th>
+            <th>상품 개별 가격</th>
+            <th>상품 개수</th>
+            <th>상품 구매 가격</th>
+          </tr>
+        </thead>
+        <tbody id = "generalcart">
+          <tr id = "generalF">
+            <td colspan="5">총가격</td>
+            <td id = "generalPrice">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <div id = "dawnDelivery">
+      <p>새벽배송 : <input type = "checkbox" id = "dawnSelectAll">
+      <label for = "dawnSelectAll">전체 선택</label>
+      <input type="button" value = "선택 삭제" id = "dawnSelectDeletion">
+      <input type="button" value = "일반 배송으로 이동" id = "replaceGeneral"></p>
+      <table>
+        <thead>
+          <tr>
+            <th>선택</th>
+            <th>상품 이미지</th>
+            <th>상품 이름</th>
+            <th>상품 개별 가격</th>
+            <th>상품 개수</th>
+            <th>상품 구매 가격</th>
+          </tr>
+        </thead>
+        <tbody id = "dawncart">
+          <tr id = "dawnF">
+            <td colspan="5">총가격</td>
+            <td id = "dawnPrice">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <div class = "search" >
+      <!--TODO 이름과 가격범위는 and조건-->
+        <p><label for = "searchName">상품 이름 :</label>
+        <input type = "search" id = "searchName"></p>
+      <!--TODO 조건이 없을 때는 전부 포함, ~이상-->
+        <p><label for = "searchRangeLow">가격 범위 :</label>
+        <input type ="search" id = "searchRangeLow">
+     <!--TODO ~이하-->
+        <label for="searchRangeHight">~</label>
+        <input type ="search" id = "searchRangeHight"></p>
+      <!--TODO 검색후 찾은 항목 색깔 변환-->
+        <input type="button" value = "검색" id = "searchButton"  >
+    <!--TODO 글자색상 red 글자크기 20px 굵기 600px-->
+        <input type="button" value = "원래 색으로 바꾸기" id = "returnColor"> 
+    </div>
+    <script src= "HW01.js"></script>  
   </body>
 </html>
