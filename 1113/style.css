@@ -1,0 +1,11 @@
+#basketA, #basketB {
+      width: 500px;
+      height: 250px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
