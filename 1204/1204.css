@@ -1,0 +1,9 @@
+main {
+    width: 800px;
+    height: 700px;
+    border: 1px solid black;
+}
+video {
+    width: 700px;
+    height: 500px;
+}

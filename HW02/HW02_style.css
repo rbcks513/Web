@@ -1,0 +1,126 @@
+
+/*로그인 창관련 style*/
+#login_form{
+  position: absolute;
+  left: 40%;
+  top: 10%;
+  width: 300px;
+  height: 100px;
+  padding: 5%;
+  background-color: orange;
+  border: 2px outset;
+  border-radius: 5px;
+  margin: 0 auto;
+  display: none;
+}
+#login_form text {
+    display: inline;
+    float: left;
+}
+.space{
+    display: inline;
+    position: relative;
+    float: right;
+}
+#buttons{
+    float: left;
+    position: relative;
+    left: 45%;
+    margin: 0%;
+}
+#btn_login {
+    position: relative;
+}
+
+#btn_Signin {
+    position: relative;
+    left: 30px;
+}
+
+#Logout {
+    display: inline;
+    float: right;
+    position: relative;
+    margin-left: 5px;
+}
+#Join {
+    display: inline;
+    float: right;
+    position: relative;
+}
+#result {
+    display: inline;
+    float: right;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+}
+
+/*태이블 관련 style*/
+#table_title{
+    text-align: center;
+    width: 100%;
+    padding: 0%;
+    margin-bottom: 0%;
+}
+table, tr, td, th {
+    border-collapse : collapse;
+    border: 1px solid black;
+    width: 100%;
+}
+table {
+    table-layout: fixed;
+}
+td {
+    height: 300px;
+}
+th.text {
+    text-align: center;
+    color : red;
+}
+
+
+
+/*일정관리 style*/
+#date_form{
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 400px;
+    height: 100px;
+    padding: 5%;
+    background-color: skyblue;
+    border: 2px outset;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: none;
+}
+#date_form text{
+    display: inline;
+    width : 100px;
+    margin-right: 20px;
+    position: relative;
+    float: left;
+}
+#date_form {
+    margin-left: 10px;
+}
+.Add_space {
+    display: inline;
+    position: relative;
+    float: left;
+}
+#Add_buttons{
+    display: inline-block;
+}
+#have_to_do {
+    width : 100px;
+    height : 100px;
+    border-collapse : collapse;
+    border: 5px solid #73AD21;
+    /* float: ;
+    position: static;
+    */
+}
+

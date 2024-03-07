@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title> 로그인 및 회원가입하기 </title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+ 	<p>로그인 및 회원 가입하기</p>
+	<form action="login.php" method="post">
+		아이디 : <input type="text" name="input_id" pattern="^([A-Za-z0-9]){6,15}" title="대소문자, 숫자 등의 조합으로 6~15자" required><br><br>
+		비밀번호 : <input type="password" name="input_pw"
+		pattern="^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*" title="반드시 문자, 숫자, 특수문자 조합으로 8~15자" required><br><br>
+		<input type="submit" value="로그인">
+        <input type="submit" value="회원가입" formaction="sign_up.php">
+        <input type="reset" value="초기화">
+	</form>
+</body>
+</html>

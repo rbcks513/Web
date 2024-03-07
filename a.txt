@@ -1,0 +1,3 @@
+openssl 이슈로인한 https:// 사이트 크롤링 어려움
+
+<META HTTP-EQUIV="refresh" CONTENT="300">  

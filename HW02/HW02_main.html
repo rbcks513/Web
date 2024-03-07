@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <title>HW#2:캘린더 만들기 201602826 김규찬</title>
+    <meta charset="utf-8" >
+    <meta name = "author" content="201602826">
+    <meta name = "keywords" content="김규찬">
+    <link rel="stylesheet" type="text/css" href="HW02_style.css?var=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id = "Add" disabled>Add</button>
+    <button id = "Logout">Logout</button>
+    <button id = "Join">Join</button>
+    <p id = "result"></p>
+    <br>
+    <div>
+     <P id = "table_title">날짜 표시</p>
+      <table id = "table"> 
+       <thead>
+        <tr id = "tr_date">
+          <th><text></text>(Sun)</th>
+          <th><text></text>(Mon)</th>
+          <th><text></text>(Tue)</th>
+          <th><text></text>(Wed)</th>
+          <th><text></text>(Thu)</th>
+          <th><text></text>(Fri)</th>
+          <th><text></text>(Sat)</th>
+        </tr>
+       </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+  <div id = "login_form">
+    <form id = "form" method="POST">
+    <text>id</text>
+    <input type="text" id = "id" class="space" name="id" pattern="^([A-Za-z0-9]){6,15}" title="대소문자, 숫자 등의 조합으로 6~15자" required><br>
+	  <text>password</text>
+    <input type="password" id = "pw" class="space" name="pw" pattern="^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*" title="반드시 문자, 숫자, 특수문자 조합으로 8~15자" required><br>
+	  <p id = "buttons">
+    <input type="submit" id = "btn_login" value="Login">
+    <button id = "btn_Signin">Signin</button>
+    </p>
+    </form>
+  </div>
+  <div id = "date_form">
+    <form id = "date_form_form">
+    <text>date</text>
+    <input type="date" id = "date" class="Add_space" name="date">
+    <input type="time" id = "time" class="Add_space" name="time"><br>
+	  <text>title</text>
+    <input type="text" id = "title" class="Add_space" name="title"><br>
+    <text>description</text>
+    <input type="text" id = "description" class="Add_space" name="description"><br>
+	  <p id = "Add_buttons">
+    <button id = "btn_save" disabled>Save</button>
+    <button id = "btn_update" disabled>Update</button>
+    <input type="submit" id = "btn_submit" value ="Submit" disabled>
+    <button id = "btn_delete" disabled>Delete</button>
+    <button id = "btn_cancel">Cancel</button>
+    </p>
+    </form>
+  </div>
+  <script src= "HW02_JS.js"></script>
+  <script src= "HW02_date_control.js"></script>
+  <script type="text/javascript">
+  // login & Join
+    url = "HW02_login.php";
+    var state = true; 
+    $("#btn_Signin").click(function() {
+      url = "HW02_sign_in.php";
+      state = false;
+    }); // 회원가입이면 변경
+  // Clicked login
+    $("#form").submit(function(event) {
+      event.preventDefault(); // 이벤트 초기화
+      $.post(url, { //data는 json 형태로 전달
+        id: $("#id").val(),
+        pw: $("#pw").val()
+      },function (data, status){
+  /* ID 보이게 하고 기존 form 초기화 */
+      if(state) {
+        $("#result").text(data);
+        //data 검사 기능으로 로그인 상태다시 확인하기
+        if(Login_Check()) { // 로그인 상태 확인
+        $("#Add").attr("disabled", false); // 로그인 확인후 설정
+        var now_user = getCookie("id"); // 쿠키에서 현재 사용자 가져오기
+        $.ajax({ //현재 사용자 일정 가져오기
+          url: "HW02_schedule_exists.php", 
+          data: { id : now_user },
+          type: "POST",
+        })
+        .done(function(result) {
+          if(result != "") { // 존재 하지 않으면
+              alert("등록된 일정이 없습니다.");
+          } else { // 존재하면 data 출력
+          /*
+          $.ajax({ //현재 사용자 일정 가져오기
+            url: "HW02_make_box.php", 
+            data: { id : now_user },
+            type: "POST",
+           }).done(function(result) {
+            //
+              });
+            })*/
+          }
+        })
+        // 일정찾기 have_schedule();
+        Show_Date();
+        }
+      }
+      if(!state) { // 회원 가입 상태 출력
+        alert(data);
+      }
+      //reset
+      $("#login_form").css("display", "none");
+      $("#id").val(null);
+      $("#pw").val(null);
+      url = "HW02_login.php";
+      state = true;
+    });
+  });
+ // Add & Schedule
+ $("#date_form").submit(function(event) {
+      event.preventDefault();
+      $("#btn_cancel").click(Hide_Add_Form()); // 취소버튼 눌릴 때
+      $("#btn_save").click( function(){
+        $.ajax({ //현재 사용자 일정 가져오기
+          url: "HW02_save_schedule.php", // 클라이언트가 요청을 보낼 서버의 URL 주소
+          data: {
+            id: getCookie("id"),
+            date : $("#date").val(),
+            time :  $("#time").val(),
+            title :  $("#title").val(),
+            description :  $("#description").val()
+          },
+          type: "POST",
+        })
+        .done(function(data) {
+            alert(data);
+        })
+        }); // Save버튼 눌릴 때
+      $("#btn_update").click(); // Update버튼 눌릴 때
+      $("#btn_submit").click(); // submit버튼 눌릴 때
+      $("#btn_delete").click(); // Delete버튼 눌릴 때
+ });
+
+  </script>
+  </body>
+</html>
